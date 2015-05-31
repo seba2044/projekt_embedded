@@ -99,7 +99,7 @@ użytkownika rozkazów.
 Uproszczony widok konstrukcji obiektu
 -------------------------------------
 
-![diagram klas konstrukcji obiektu](uml/ClassDiagram2.png)
+![diagram klas konstrukcji obiektu](uml/ClassDiagram3.png)
 
 - główny kontroler --
 :   Obiekt zajmujący się kontrolą wszystkich urządzeń oraz czujników, jak
