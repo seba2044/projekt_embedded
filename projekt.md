@@ -48,6 +48,8 @@ Parametry
 Przypadki użycia
 ----------------
 
+![diagram przypadków użycia](uml/UseCaseDiagram2.png)
+
 System został zaprojektowany do użytkowania przez jedną osobę jednocześnie,
 jednak podczas działania systemu nie musi być to ta sama osoba. Poniżej
 pokazany jest diagram przypadków użycia sterownika.
@@ -81,8 +83,11 @@ Na diagramie przedstawiono _LICZBĘ_ przypadków użycia:
 
 - zmień stan urządzenia --
 :   Ten przypadek reprezentuje faktyczną zmianę stanu urządzenia wyjściowego,
-    wywoływaną przez użytkownika lub automatycznie, zgodnie z ustawionym przez
-    użytkownika zegarem.
+    wywoływaną przez użytkownika
+
+- automatycznie zmień stan urządzenia --
+:   Ten przypadek reprezentuje faktyczną zmianę stanu urządzenia wyjściowego
+    _automatycznie_, zgodnie z ustawionym przez użytkownika zegarem.
 
 
 Użytkownik używa systemu wybierając konkretne akcje z paneli urządzeń
@@ -90,6 +95,57 @@ Użytkownik używa systemu wybierając konkretne akcje z paneli urządzeń
 na głównym ekranie (pasywnie, kolejne dwa przypadki użycia). Ostatni przypadek
 jest wywoływany wewnętrznie poprzez sterownik na podstawie wprowadzonych przez
 użytkownika rozkazów.
+
+Uproszczony widok konstrukcji obiektu
+-------------------------------------
+
+![diagram klas konstrukcji obiektu](uml/ClassDiagram2.png)
+
+- główny kontroler --
+:   Obiekt zajmujący się kontrolą wszystkich urządzeń oraz czujników, jak
+    również obsługą zdarzeń interfejsu (rozkazy użytkownika i wyświetlanie
+    informacji na ekranie)
+    
+- zegary urządzeń --
+:   Jednostki odpowiedzialne za automatyczną zmianę stanu urządzeń
+    wejściowych. 
+    
+- wyświetlacz i dotyk wyświetlacza --
+:   Stanowią całość interfejsu użytkownika. Wyświetlacz dotykowy (pomimo
+    bycia postrzeganym jako jedno fizyczne urządzenie) zdecydowano się opisać
+    jako dwa różne obiekty. Pozwala to na ewentualną modyfikację sterownika i
+    zastąpienie wyświetlacza dotykowego wyświetlaczem oddzielonym od klawiatury.
+    
+- czujnik --
+:   Reprezentuje wejście interfejsu czujników dołączonych do sterownika.
+
+- włącznik urządzenia --
+:   Reprezenteuje fizyczne układy podłączone do urządzeń wyjściowych. Ich
+    zadaniem jest ujednolicenie zadań włączania i wyłączania urządzeń.
+
+
+Z powyżej opisanych przupadków użycia oraz wymagań systemu jasno wynika
+pokazany poniżej diagram klas. Należy zauważyć że nie jest to diagram klas w
+ścisłym rozumieniu UML -- służy jedynie do opisania budowy sterownika w
+kontekście wykonywanych funkcji.
+
+Powyższy diagram klas wynika bezpośrednio z opisanych wcześniej przypadków
+użycia. Klasy na nim opisane pokrywają wszystkie przypadki użycia. Przypadki
+"wybierz akcję z panelu" wiążą obiekty "kontroler" oraz obiekty wyświetlacza.
+Odpowiednie uszczególnienia tych przypadków wywołują przypadki "ustaw zegar" i
+"zmień stan urządzenia", które wykonują się pomiędzy odpowiednio "zegarami
+urządzenia" i "kontrolerem" oraz "włącznikami urządzenia" i "kontrolerem".
+Przypadek "automatycznie zmień stan urządzenia" wiąże klasy "zegar urządzenia"
+i "włącznik urządzenia" dla każdego z urządzeń wejściowych.
+
+Ze względu na bezpieczeństwo systemu zdecydowano o fizycznym rozdzieleniu
+głównego kontrolera i zegarów urządzeń. Pozwala to na niezawodne działanie
+automatycznego wyłączania urządzeń w przypadku awarii innych obiektów systemu.
+Wprowadza to również komplikację w postaci podwójnego wejścia włącznika
+urządzenia, co może prowadzić do wyścigu o zasoby (przypadek jednoczesnej
+zmiany stanu urządzenia automatycznie, na wniosek zegara i na żądanie
+użytkownika poprzez kontroler).
+
 
 Panele konfiguracyjne
 =====================
