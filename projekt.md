@@ -134,7 +134,7 @@ Uproszczony widok konstrukcji obiektu
 :   Reprezentuje wejście interfejsu czujników dołączonych do sterownika.
 
 - włącznik urządzenia --
-:   Reprezenteuje fizyczne układy podłączone do urządzeń wyjściowych. Ich
+:   Reprezentuje fizyczne układy podłączone do urządzeń wyjściowych. Ich
     zadaniem jest ujednolicenie zadań włączania i wyłączania urządzeń.
 
 
@@ -217,23 +217,33 @@ Ma to na celu uniknięcie sytuacji w której użytkownik po wybraniu czasu
 zastanawia się, a następnie zmienia stan manualnie równocześnie z zegarem.
 
 
-Panele konfiguracyjne
+Interfejs użytkownika
 =====================
 
-OUT
----
+Poniżej przedstawiono proponowany wygląd panelu głównego oraz panelu
+administracyjnego dla każdego urządzenia.
 
-Po podłączeniu urządzenia do portu OUT nr staje się aktywny przycisk "OUT nr",
-co pozwala na przejście do panelu administracyjnego. Panel administracyjny
-pozwala na włączenie/wyłączenie zasilania urządzenia podpiętego do danego
-portu. Panel pozwala również na ustalenie przedziału czasowego w którym
-urządzenie jest włączone. 
+![panel główny](uml/panel-main.png)
 
-IN
---
+- 1 --
+:   miejsce na informacje z czujników
 
-Po naciśnięciu przycisku "IN nr" wyświetlone zostają informacje o sensorze
-oraz dane przekazane do urządzenia przez sensor. W panelu tym znajduje
-się przycisk umożliwiający odłączenie zasilania od czujnika.
+- 2 --
+:   widżety przedstawiające ustawienia zegara dla każdego z urządzeń
+
+- 3 --
+:   przyciski skojarzone z kolejnymi urządzeniami wejściowymi
+
+
+Naciśnięcie przycisków oznaczonych na schemacie numerem 3 powoduje przejście
+do panelu administracyjnego każdego z urządzeń Panel administracyjny
+pozwala na przełączenie zasilania urządzenia podpiętego do danego
+portu (przycisk oznaczony jako włącz/wyłącz). Panel pozwala również na ustalenie przedziału czasowego po którym
+nastąpi automatyczne przełączenie zasilania urządzenia przy pomocy widżetu
+opisanego na schemacie jako "ustaw czas". Dodatkowo w panelu administracyjnym
+znajduje się przycisk dający możliwość powrotu do panelu głównego zapisując
+ustawienia zegara.
+
+![panel administracyjny](uml/front-set.png)
 
 
