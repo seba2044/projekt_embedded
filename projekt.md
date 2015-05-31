@@ -223,7 +223,7 @@ Interfejs użytkownika
 Poniżej przedstawiono proponowany wygląd panelu głównego oraz panelu
 administracyjnego dla każdego urządzenia.
 
-![panel główny](uml/panel-main.png)
+![panel główny](panel-main.png)
 
 - 1 --
 :   miejsce na informacje z czujników
@@ -244,6 +244,6 @@ opisanego na schemacie jako "ustaw czas". Dodatkowo w panelu administracyjnym
 znajduje się przycisk dający możliwość powrotu do panelu głównego zapisując
 ustawienia zegara.
 
-![panel administracyjny](uml/front-set.png)
+![panel administracyjny](front-set.png)
 
 
